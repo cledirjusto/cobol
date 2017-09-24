@@ -1,0 +1,152 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID.	EX02.
+       AUTHOR.          CLEDIR JUSTO.
+       INSTALLATION.   	FATEC-SP.
+       DATE-WRITTEN.   	21/04/2013.
+       DATE-COMPILED.
+       SECURITY. APENAS O AUTOR PODE MODIFICA-LO.
+
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       SOURCE-COMPUTER. IBM-PC.
+       OBJECT-COMPUTER. IBM-PC.
+       SPECIAL-NAMES.   DECIMAL-POINT IS COMMA.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT CADCLI ASSIGN TO DISK
+           ORGANIZATION IS LINE SEQUENTIAL.
+           SELECT RELCLI ASSIGN TO DISK.
+
+       DATA DIVISION.
+       FILE SECTION.
+
+       FD  CADCLI
+           LABEL RECORD ARE STANDARD
+           VALUE OF FILE-ID IS "CADCLI.DAT".
+       01  REG-CLI.
+           02 CPF	  PIC 9(11).
+           02 NOME-ENT	  PIC X(30).
+           02 ESTADO-ENT  PIC X(02).
+           02 CIDADE	  PIC X(30).
+           02 REG-TELEFONE.
+              03 PREFIX   PIC 9(04).
+              03 NUMERO   PIC 9(04).
+           02 DATA-ENT.
+              03 DDD      PIC 9(02).
+              03 MMM      PIC 9(02).
+              03 AAAA     PIC 9(04).
+  
+       FD  RELCLI
+           LABEL RECORD IS OMITTED.
+       01  REG-ATR     PIC X(80).
+
+       WORKING-STORAGE SECTION.
+       77  FIM-ARQ     PIC X(03) VALUE "NAO".
+       77  CT-LIN      PIC 9(02) VALUE 25.
+       77  CT-PAG      PIC 9(02) VALUE ZEROES.
+       77  TOTALCLI    PIC 9(04) VALUE ZEROES.
+
+       01 CAB-01.
+          02 FILLER    PIC X(70) VALUE SPACES.
+          02 FILLER    PIC X(05) VALUE "PAG. ".
+          02 VAR-PAG   PIC 99.
+          02 FILLER    PIC X(03) VALUE SPACES.
+
+       01 CAB-02.
+          02 FILLER    PIC X(31) VALUE SPACES.
+          02 FILLER    PIC X(17) VALUE "TURISMAR TURISMOS".
+          02 FILLER    PIC X(32) VALUE SPACES.
+
+       01 CAB-03.
+          02 FILLER    PIC X(23) VALUE SPACES.
+          02 FILLER    PIC X(20) VALUE "CLIENTES NO PERIODO ".
+          02 FILLER    PIC X(14) VALUE "DE 2010 A 2011".
+          02 FILLER    PIC X(19) VALUE SPACES.
+       
+       01 CAB-04.
+          02 FILLER    PIC X(10)  VALUE SPACES.
+          02 FILLER    PIC X(4)  VALUE "NOME".
+          02 FILLER    PIC X(20) VALUE SPACES.
+          02 FILLER    PIC X(6)  VALUE "ESTADO".
+          02 FILLER    PIC X(20) VALUE SPACES.
+          02 FILLER    PIC X(08) VALUE "TELEFONE".
+          02 FILLER    PIC X(05)  VALUE SPACES.
+
+       01 CAB-05.
+          02 FILLER    PIC X(30) VALUE "------------------------------".
+          02 FILLER    PIC X(30) VALUE "------------------------------".
+          02 FILLER    PIC X(20) VALUE "--------------------".
+
+       01 CAB-06.
+          02 FILLER    PIC X(19) VALUE "Total de Clientes: ".
+          02 TOTCL     PIC 9(04).
+          02 FILLER    PIC X(57) VALUE SPACES.
+
+       01 DETALHE.
+
+          02 NOM       PIC X(30).
+          02 FILLER    PIC X(05) VALUE SPACES.
+          02 EST       PIC X(02).
+          02 FILLER    PIC X(23) VALUE SPACES.
+          02 TELEF     PIC 9(04).
+          02 FILLER    PIC X(01) VALUE "-".
+          02 TELEF2    PIC 9(04).
+
+       
+       PROCEDURE             DIVISION.
+       
+       PGM-EX02.
+	  PERFORM INICIO.
+	  PERFORM PRINCIPAL UNTIL FIM-ARQ EQUAL "SIM".
+      	  PERFORM FIM.
+	  STOP RUN.
+
+       INICIO.
+          OPEN INPUT  CADCLI
+               OUTPUT RELCLI.
+	  PERFORM LEITURA.
+
+       LEITURA.
+          READ CADCLI AT END MOVE "SIM" TO FIM-ARQ.
+
+       PRINCIPAL.
+          PERFORM VERIFICACAO.
+	  PERFORM LEITURA.
+
+       VERIFICACAO.
+       IF AAAA NOT<2011 and NOT>2012
+          PERFORM IMPRESSAO.
+
+       IMPRESSAO.
+          IF CT-LIN GREATER THAN 24
+	      PERFORM CABECALHO.
+          PERFORM IMPDET.
+
+       IMPDET.
+          MOVE NOME-ENT TO NOM.
+          MOVE ESTADO-ENT TO EST.
+          MOVE PREFIX     TO TELEF.
+          MOVE NUMERO     TO TELEF2.
+          WRITE REG-ATR FROM DETALHE AFTER ADVANCING 1 LINE.
+	  ADD 1 TO CT-LIN.
+          ADD 1 TO TOTALCLI.
+
+       CABECALHO.
+	  ADD 1 TO CT-PAG.
+	  MOVE CT-PAG TO VAR-PAG.
+          MOVE SPACES TO REG-ATR.
+          WRITE REG-ATR AFTER ADVANCING PAGE.
+          WRITE REG-ATR FROM CAB-01 AFTER ADVANCING 1 LINE.
+          WRITE REG-ATR FROM CAB-02 AFTER ADVANCING 1 LINES.
+	  WRITE REG-ATR FROM CAB-03 AFTER ADVANCING 2 LINES.
+          WRITE REG-ATR FROM CAB-04 AFTER ADVANCING 2 LINES.
+	  WRITE REG-ATR FROM CAB-05 AFTER ADVANCING 1 LINES.
+	  MOVE ZEROES TO CT-LIN.
+
+
+       FIM.
+          MOVE TOTALCLI TO TOTCL.
+          WRITE REG-ATR FROM CAB-06 AFTER ADVANCING 1 LINES.
+          CLOSE CADCLI
+                RELCLI.
+                      

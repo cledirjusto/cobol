@@ -1,0 +1,87 @@
+       IDENTIFICATION DIVISION.
+           PROGRAM-ID.		EX08.
+           AUTHOR.		CLEDIR JUSTO.
+           INSTALLATION.	FATEC-SP.
+           DATE-WRITTEN.	03/03/2013.
+           DATE-COMPILED.
+           SECURITY.
+
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       SOURCE-COMPUTER.		IBM-PC.
+       OBJECT-COMPUTER.		IBM-PC.
+       SPECIAL-NAMES.		DECIMAL-POINT IS COMMA.	
+
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT CADFUN ASSIGN TO DISK
+           ORGANIZATION IS LINE SEQUENTIAL.
+           SELECT CADFSAI ASSIGN TO DISK
+           ORGANIZATION IS LINE SEQUENTIAL.
+
+       DATA DIVISION.
+       FILE SECTION.
+       FD CADFUN
+           LABEL RECORD ARE STANDARD
+           VALUE OF FILE-ID IS "CADFUN.DAT".
+		   
+       01 REG-ENT.
+           02 CODIGO-ENT	PIC 9(05).
+           02 NOME-ENT		PIC X(20).
+           02 SALARIOB          PIC 9(05)V99.
+		   
+       FD CADFSAI
+           LABEL RECORD ARE STANDARD
+           VALUE OF FILE-ID IS "CADFSAI.DAT".
+		   
+       01 REG-SAI.
+           02 CODIGO-SAI		PIC 9(05).
+           02 NOME-SAI		PIC X(20).
+           02 SALARIOREAG	PIC 9(05)V99.
+
+		   
+           WORKING-STORAGE SECTION.
+           77 FIM-ARQ		PIC X(03) VALUE "NAO".
+           77 REAJ              PIC 9(05)V99 VALUE ZEROS.
+
+       PROCEDURE DIVISION.
+	   
+       PGM-EX08.
+           PERFORM INICIO.
+           PERFORM PRINCIPAL
+             UNTIL FIM-ARQ EQUAL "SIM".
+             
+           PERFORM TERMINO.
+
+       STOP RUN.
+
+       INICIO.
+
+           OPEN INPUT CADFUN
+                OUTPUT CADFSAI.
+           PERFORM LEITURA.
+
+       LEITURA.
+           READ CADFUN
+           AT END
+           MOVE "SIM" TO FIM-ARQ.
+
+       PRINCIPAL.
+           PERFORM GRAVACAO.
+           PERFORM LEITURA.
+
+       GRAVACAO.
+           IF SALARIOB NOT > 1000
+              COMPUTE REAJ = SALARIOB + (SALARIOB * 12/100).
+           IF SALARIOB > 1000 AND NOT > 2000
+              COMPUTE REAJ = SALARIOB + (SALARIOB * 11/100).
+           IF SALARIOB > 2000 
+              COMPUTE REAJ = SALARIOB + (SALARIOB * 10/100).
+           MOVE CODIGO-ENT TO CODIGO-SAI.
+           MOVE NOME-ENT TO NOME-SAI.
+           MOVE REAJ TO SALARIOREAG.
+           WRITE REG-SAI.
+
+       TERMINO.
+           CLOSE   CADFUN
+                   CADFSAI.

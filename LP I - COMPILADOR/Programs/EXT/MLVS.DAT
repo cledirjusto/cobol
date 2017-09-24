@@ -1,0 +1,59 @@
+REM	PRIMEIRO LIMPAR A TELA
+be cls
+be sa bright yellow on black
+
+REM	DESENHAR UMA JANELA NA TELA
+window 5,10,19,69 bright cyan on magenta explode
+
+REM	E COLOCAR UM TEXTO NELA.
+rowcol 12,29 "Melvis Studios apresenta..." bright white
+
+REM	AGORA COLOCA UMA JANELA NO CENTRO COM UMA BORDA DE JANELINHAS
+window 0,0,4,9 bright cyan explode  
+window 0,10,4,19 magenta  explode 
+window 0,20,4,29 bright cyan explode 
+window 0,30,4,39 magenta  explode 
+window 0,40,4,49 bright cyan explode 
+window 0,50,4,59 magenta  explode 
+window 0,60,4,69 bright cyan explode 
+window 0,70,4,79 magenta  explode 
+window 5,70,9,79 bright cyan explode 
+window 10,70,14,79 magenta  explode 
+window 15,70,19,79 bright cyan explode 
+window 20,70,24,79 magenta  explode 
+window 20,60,24,69 bright cyan explode 
+window 20,50,24,59 magenta  explode 
+window 20,40,24,49 bright cyan explode 
+window 20,30,24,39 magenta  explode 
+window 20,20,24,29 bright cyan explode 
+window 20,10,24,19 magenta  explode 
+window 20,0,24,9 bright cyan explode 
+window 15,0,19,9 magenta  explode 
+window 10,0,14,9 bright cyan explode 
+window 5,0,9,9 magenta  explode
+
+REM	COLOCA UMA NOVA JANELA NO CENTRO
+window 4,9,21,70 bright cyan on blu explode shadow
+
+delay 1
+rowcol 08,20 "€€€€   €€€€" red
+rowcol 09,20 "€€±±€ €±±€€ €€€€ €   €   € ﬂ ‹€€€€" red
+rowcol 10,20 "€€ ±€±€± €€ €‹   €   €   € € ﬂ‹‹‹‹" red
+rowcol 11,20 "€€  ±€±  €€ €    €    €±€  €      €" red
+rowcol 12,20 "€€       €€ €€€€ €€€€  €   € €€€€€±" red
+delay 2
+rowcol 13,20 "€€€€" gre
+rowcol 14,20 "€€   €€± € €  € €ﬂﬂ€ €€± € €ﬂﬂ€ €ﬂﬂ €ﬂﬂ€"  gre
+rowcol 15,20 "€€€  €±€ € €‹‹€ €‹‹€ €±€ € €    €‹  €‹‹€" gre
+rowcol 16,20 "€€   € €±€ €  € €  € € €±€ €    €   € €" gre
+rowcol 17,20 "€€€€ € ±€€ €  € €  € € ±€€ €‹‹€ €‹‹ € €€" gre
+
+
+REM	E TOCA UM PEQUENO SOM.
+beep /F392 /D4;
+beep /F392 /D1;
+beep /F523 /D15;
+
+delay 3
+be sa white on black
+be cls

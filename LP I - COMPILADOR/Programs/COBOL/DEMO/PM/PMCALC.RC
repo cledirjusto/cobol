@@ -1,0 +1,135 @@
+
+#define	    INCL_WIN
+#include    <pmwin.h>
+
+#define	    WM_ABOUT	0x100d
+#define	    WM_CUSTOM	0x100e
+#define	    WM_EXIT	0x100f
+#define	    WM_0	0x1012
+#define	    WM_1	0x1013
+#define	    WM_2	0x1014
+#define	    WM_3	0x1015
+#define	    WM_4	0x1016
+#define	    WM_5	0x1017
+#define	    WM_6	0x1018
+#define	    WM_7	0x1019
+#define	    WM_8	0x101a
+#define	    WM_9	0x101b
+#define	    WM_A	0x101c
+#define	    WM_B	0x101d
+#define	    WM_C	0x101e
+#define	    WM_D	0x101f
+#define	    WM_E	0x1020
+#define	    WM_F	0x1021
+#define	    WM_DP	0x1022
+#define	    WM_CHS	0x1023
+#define	    WM_PLUS	0x1024
+#define	    WM_MINUS	0x1025
+#define	    WM_MULTIPLY	0x1026
+#define	    WM_DIVIDE	0x1027
+#define	    WM_ENTER	0x1028
+#define	    WM_ROLLDOWN	0x1029
+#define	    WM_ROLLUP	0x102a
+#define	    WM_CLEAR	0x102b
+#define	    WM_CLX	0x102c
+#define	    WM_HEX	0x102d
+#define	    WM_DEC	0x102e
+#define	    WM_OCT	0x102f
+#define	    WM_BIN	0x1030
+#define	    WM_POWER	0x1031
+#define	    WM_RECIP	0x1032
+#define	    WM_XCHG	0x1033
+
+#define	    WM_BASE	0x1100
+#define	    WM_FUNCTION	0x1101
+#define	    WM_REGISTER	0x1102
+#define	    WM_X	0x1103
+#define	    WM_H	0x1104
+
+
+ICON	1   pmcalc.ico
+POINTER	2   pmcalc.ptr
+
+MENU	1   PRELOAD
+BEGIN
+    SUBMENU	    "~Base"			,WM_BASE
+    BEGIN
+	MENUITEM    "~Hexadecimal\tF3"		,WM_HEX
+	MENUITEM    "~Decimal\tHome"		,WM_DEC
+	MENUITEM    "~Octal\tF8"		,WM_OCT
+	MENUITEM    "~Binary\tF2"		,WM_BIN
+	MENUITEM    SEPARATOR
+	MENUITEM    "~Custom...\tAlt+R"		,WM_CUSTOM
+    END
+    SUBMENU	    "~Function"			,WM_FUNCTION
+    BEGIN
+	MENUITEM    "~Add\t+"			,WM_PLUS
+	MENUITEM    "~Subtract\t-"		,WM_MINUS
+	MENUITEM    "~Multiply\t*"		,WM_MULTIPLY
+	MENUITEM    "~Divide\t/"		,WM_DIVIDE
+	MENUITEM    "~Power\tF5"		,WM_POWER
+	MENUITEM    "~Reciprocal\tF6"		,WM_RECIP
+    END
+    SUBMENU	    "~Register"			,WM_REGISTER
+    BEGIN
+	MENUITEM    "~Clear\tEnd"		,WM_CLEAR
+	MENUITEM    "Clear ~X\tDelete"		,WM_CLX
+	MENUITEM    SEPARATOR
+	MENUITEM    "Roll ~Down\tPage Down"    ,WM_ROLLDOWN
+	MENUITEM    "Roll ~Up\tPage Up"	       ,WM_ROLLUP
+	MENUITEM    SEPARATOR
+	MENUITEM    "~Exchange X,Y\tF7"		,WM_XCHG
+	MENUITEM    "Change ~Sign\tInsert"	,WM_CHS
+    END
+    SUBMENU	    "E~xit"			,WM_X
+    BEGIN
+	MENUITEM    "E~xit Calculator"		,WM_EXIT
+	MENUITEM    "~Continue"			,0
+    END
+    SUBMENU	    "~Help"			,WM_H
+    BEGIN
+	MENUITEM    "~General\tF1"		,WM_ABOUT
+    END
+END
+
+ACCELTABLE  1	PRELOAD
+BEGIN
+    "0"	    ,WM_0
+    "1"	    ,WM_1
+    "2"	    ,WM_2
+    "3"	    ,WM_3
+    "4"	    ,WM_4
+    "5"	    ,WM_5
+    "6"	    ,WM_6
+    "7"	    ,WM_7
+    "8"	    ,WM_8
+    "9"	    ,WM_9
+    "a"	    ,WM_A	,CONTROL
+    "b"	    ,WM_B	,CONTROL
+    "c"	    ,WM_C	,CONTROL
+    "d"	    ,WM_D	,CONTROL
+    "e"	    ,WM_E	,CONTROL
+    "f"	    ,WM_F	,CONTROL
+    "."	    ,WM_DP
+VK_INSERT   ,WM_CHS	,VIRTUALKEY
+    "+"	    ,WM_PLUS
+    "-"	    ,WM_MINUS
+    "*"	    ,WM_MULTIPLY
+    "/"	    ,WM_DIVIDE
+VK_ENTER    ,WM_ENTER	,VIRTUALKEY
+VK_PAGEDOWN ,WM_ROLLDOWN,VIRTUALKEY
+VK_PAGEUP   ,WM_ROLLUP	,VIRTUALKEY
+VK_END	    ,WM_CLEAR	,VIRTUALKEY
+VK_DELETE   ,WM_CLX	,VIRTUALKEY
+VK_F3	    ,WM_HEX	,VIRTUALKEY
+VK_HOME	    ,WM_DEC	,VIRTUALKEY
+VK_F8	    ,WM_OCT	,VIRTUALKEY
+VK_F10	    ,WM_BIN	,VIRTUALKEY
+VK_F5	    ,WM_POWER	,VIRTUALKEY
+VK_F6	    ,WM_RECIP	,VIRTUALKEY
+VK_F7	    ,WM_XCHG	,VIRTUALKEY
+    "r"	    ,WM_CUSTOM	,ALT
+VK_F1	    ,WM_ABOUT	,VIRTUALKEY
+END
+
+rcinclude pmcalc.dlg

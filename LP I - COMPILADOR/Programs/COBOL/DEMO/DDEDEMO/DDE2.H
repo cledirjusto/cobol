@@ -1,0 +1,10 @@
+#define IDB_TERMINATE   266
+#define IDB_EXIT        263
+#define IDL_COLOUR      261
+#define IDT_VALUE3      260
+#define IDT_VALUE2      259
+#define IDT_VALUE1      258
+#define IDT_NULL        257
+#define IDD_DDEEG       256
+#define IDB_INITIATE    264
+#define IDT_STATUS      265

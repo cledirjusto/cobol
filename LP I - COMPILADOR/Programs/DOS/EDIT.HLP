@@ -1,0 +1,372 @@
+@@!1!@
+Comandos do Edit 
+
+Comandos para movimentar o cursor
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Home          - Mover-se para o in¡cio da linha atual.
+End           - Mover-se para o fim da linha atual.
+Ctrl+Acima    - Rolar uma linha para cima.
+Ctrl+Abaixo   - Rolar uma linha para baixo.
+PgUp          - Rolar uma tela para cima.
+PgDn          - Rolar uma tela para baixo.
+Ctrl+PgUp     - Rolar uma tela para a esquerda.
+Ctrl+PgDn     - Rolar uma tela para a direita.
+Ctrl+Home     - Mover-se para o in¡cio do documento.
+Ctrl+End      - Mover-se para o fim do documento.
+Ctrl+Esquerda - Mover-se uma palavra para a esquerda.
+Ctrl+Direita  - Mover-se uma palavra para a direita.
+
+Comandos para editar
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Enter      - Iniciar uma nova linha.
+Delete     - Excluir o caractere sobre o qual est  o cursor.
+Backspace  - Excluir o caractere … esquerda do cursor.
+Tab        - Mover o cursor at‚ a pr¢xima parada de tabula‡Æo.
+Insert     - Alternar entre os modos Inserir e Sobrescrever.
+Ctrl+Y     - Excluir a linha atual.
+Ctrl+V     - Colar o conteúdo do buffer no arquivo.
+Ctrl+P     - Permitir a inser‡Æo de caracteres especiais.
+
+Comandos para trabalhar com regiäes selecionadas 
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Shift      - Use a tecla Shift em conjunto com as fun‡äes
+             de movimento do cursor para selecionar regiäes.
+Ctrl+C     - Copiar a sele‡Æo atual para o buffer.
+Ctrl+X     - Excluir a sele‡Æo atual e copi -la para o buffer.
+Delete     - Excluir a sele‡Æo atual.
+Tab        - Recuar as linhas selecionadas.
+Shift+Tab  - Recuar negativamente as linhas selecionadas.
+
+Comandos para localizar e substituir texto
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Ctrl+Q+F   - Localizar texto.
+Ctrl+Q+A   - Localizar texto e substitu¡-lo.
+F3         - Repetir a £ltima localiza‡Æo.
+
+Comandos para gerenciar janelas
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+F6         - Alternar para a pr¢xima janela de edi‡Æo.
+F8         - Alternar para o pr¢ximo arquivo que vocˆ est  usando.
+Ctrl+F6    - Abrir segunda janela de edi‡Æo.
+Ctrl+F4    - Fechar segunda janela de edi‡Æo.
+Ctrl+F8    - Redimensionar as janelas de edi‡Æo.
+
+Outros comandos
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+F1         - Exibir a ajuda contextual.
+
+Tamb‚m sÆo aceitas muitas teclas de atalho das versäes
+anteriores do MS-DOS EDIT.
+@@!3!@
+Localizar
+
+Localiza texto em um arquivo.
+
+ Para localizar um trecho que seja uma palavra inteira, 
+  nÆo parte de uma palavra mais extensa, clique em 
+  "Palavra inteira somente".
+ Para localizar um trecho com a mesma combina‡Æo de letras 
+  mai£sculas e min£sculas que o texto procurado, clique em
+  "Diferenciar mai£sculas de min£sculas".
+ Pressione Esc a qualquer momento para cancelar a busca.
+@@!4!@
+Substituir
+
+Localiza o texto especificado e o substitui por um novo texto.
+
+ Para confirmar cada substitui‡Æo, clique no botÆo "Substituir".
+ Para substituir todas as ocorrˆncias do texto de uma vez, 
+  clique no botÆo "Substituir todos".
+ Para localizar um trecho que seja uma palavra inteira, 
+  nÆo parte de uma palavra mais extensa, clique em
+  "Palavra inteira somente".
+ Para localizar um trecho com a mesma combina‡Æo de letras 
+  mai£sculas e min£sculas que o texto procurado, clique em
+  "Diferenciar mai£sculas de min£sculas".
+
+A primeira ocorrˆncia do texto ‚ selecionada, e vocˆ ‚ solicitado
+a "Substituir" essa coincidˆncia, a "Ignorar" essa coincidˆncia
+sem substitu¡-la ou a "Cancelar" a busca.
+Pressione Esc a qualquer momento para cancelar a opera‡Æo.
+@@!5!@
+Arquivo Abrir
+
+Abre um arquivo existente ou cria um novo arquivo com esse nome.
+
+ Vocˆ pode usar as caixas "Arquivos" e "Pastas" para
+  selecionar o nome do caminho para o arquivo. Ou digitar o nome
+  do caminho na caixa "Nome arquivo".
+ Se o arquivo nÆo existir, um novo arquivo vazio ser  criado com
+  o nome do caminho especificado.
+ Para abrir um arquivo no modo Somente Leitura, clique em 
+  "Abrir somente leitura".
+ Para abrir o arquivo no modo Bin rio, clique em "Abrir bin rio".
+  Em seguida, digite a largura de linha desejada na caixa 
+  "Largura da linha", localizada sob a caixa de verifica‡Æo 
+  "Abrir bin rio".
+@@!6!@
+Arquivo Salvar Como
+
+Salva e nomeia o arquivo com o qual vocˆ estiver trabalhando.
+
+ Use este comando para nomear um novo arquivo ou renomear um 
+  arquivo existente. Use o comando Arquivo Salvar, para salvar um
+  arquivo existente sem renome -lo.
+ Digite o novo nome do caminho na caixa "Nome arquivo", ou use
+  as caixas "Pastas" e "Arquivos existentes" para ajud -lo a
+  selecionar outro nome de arquivo, pasta ou unidade.
+ Se j  houver um arquivo existente com o mesmo nome, o Edit lhe
+  pergunta se vocˆ tem certeza de que deseja substitu¡-lo por este
+  arquivo.
+@@!8!@
+Imprimir
+
+Imprime o arquivo selecionado no qual vocˆ est  trabalhando.
+
+ Para imprimir somente parte do arquivo, selecione o trecho
+  desejado. Na caixa de di logo Imprimir, clique em
+  "Texto selecionado".
+ Para imprimir todo o arquivo, clique em "Documento completo".
+@@!9!@
+Cores
+
+Determina a cor dos elementos da tela.
+1. Na lista "Item", clique no item a ser alterado.
+2. Na lista "Primeiro plano", clique na cor a ser aplicada
+   ao item.
+3. Na lista "Segundo plano", clique na cor a ser aplicada
+   ao fundo.
+   
+Dica:
+ Para voltar ao esquema de cores original, clique em "PadrÆo".  
+  Isso desfaz todas as altera‡äes realizadas.
+@@!10!@
+Defini‡äes
+
+Determina as configura‡äes do Edit.
+
+ Use "Paradas de Tab" para determinar o n£mero de paradas
+  de tabula‡Æo em cada linha.
+ Use "Porta da impressora" para indicar a porta … qual a
+  impressora est  conectada.
+@@!101!@
+Arquivo Novo
+
+Cria um novo arquivo.
+
+Quando vocˆ salva o arquivo, ‚ solicitado a fornecer o nome do
+caminho no qual ele deve ser salvo. Use o comando Arquivo Abrir
+para abrir um arquivo existente.
+@@!102!@
+Arquivo Abrir
+
+Abre um arquivo existente ou cria um novo arquivo com esse nome.
+Podem existir at‚ 9 arquivos na mem¢ria de uma s¢ vez.
+@@!103!@
+Arquivo Fechar
+
+Fecha o arquivo atualmente em exibi‡Æo.
+Se o arquivo tiver sido alterado desde a £ltima vez em que foi
+salvo, vocˆ ‚ solicitado a salv -lo novamente.
+@@!104!@
+Arquivo Salvar
+
+Salva o arquivo atualmente em exibi‡Æo.
+
+Se o arquivo ainda nÆo tiver nome, vocˆ ‚ solcitado a fornecer um
+nome do caminho no qual ele deve ser salvo. Se houver um arquivo 
+existente com o mesmo nome que vocˆ deseja atribuir ao arquivo, 
+vocˆ ‚ solicitado a decidir se deseja sobrescrever o arquivo 
+existente, ou nÆo.
+@@!105!@
+Arquivo Salvar Como
+
+Salva o arquivo atualmente em exibi‡Æo com outro nome ou permite 
+nomear um arquivo sem nome.
+
+Se houver um arquivo existente com nome idˆntico ao do arquivo que
+est  sendo salvo, vocˆ ‚ solicitado a decidir se deseja
+sobrescrever o arquivo existente, ou nÆo.
+
+Vocˆ tamb‚m pode usar este comando para salvar um arquivo aberto 
+no modo Somente Leitura com outro nome. Depois que isso for feito,
+o arquivo estar  no modo Somente Leitura.
+@@!106!@
+Arquivo Imprimir
+
+Imprime o arquivo atual na impressora.
+
+Vocˆ pode imprimir todo o arquivo ou apenas a sele‡Æo atual.
+@@!107!@
+Arquivo Sair
+
+Sai do Edit.
+
+Se algum dos arquivos tiver sido alterado desde a £ltima vez em
+que foi salvo, vocˆ ‚ solicitado a decidir se deseja salvar cada 
+um deles.
+Clique em "Sim" para salvar o arquivo, em "NÆo" para descartar
+as altera‡äes ou em "Cancelar" para continuar a editar o arquivo.
+@@!112!@
+Editar Recortar
+
+Exclui a regiÆo selecionada e a copia para a  rea de transferˆncia
+do Edit.
+
+A  rea de transferˆncia do Edit ‚ uma  rea de armazenamento 
+tempor ria dentro do Edit, separada da µrea de Transferˆncia
+do Windows.
+
+Vocˆ tamb‚m pode usar a antiga combina‡Æo Shift+Delete para 
+recortar o texto.
+@@!113!@
+Editar Copiar
+
+Copia a regiÆo selecionada para a  rea de transferˆncia do Edit.
+
+Vocˆ tamb‚m pode usar a antiga combina‡Æo Ctrl+Ins para copiar
+o texto.
+@@!114!@
+Editar Colar
+
+Cola o conte£do da  rea de transferˆncia (se houver) na posi‡Æo
+do cursor.
+
+Vocˆ tamb‚m pode usar a antiga combina‡Æo Shift+Ins para colar 
+o texto.
+O mesmo texto pode ser colado mais de uma vez.
+@@!115!@
+Editar Apagar
+
+Exclui a sele‡Æo atual sem copi -la para a  rea de transferˆncia.
+@@!121!@
+Localizar
+
+Localiza e real‡a o texto especificado em um arquivo carregado.
+@@!122!@
+Repetir éltima Localiza‡Æo
+
+Localiza a pr¢xima ocorrˆncia do texto desejado. Inicia a busca
+na £ltima ocorrˆncia localizada.
+@@!123!@
+Substituir
+
+Localiza o texto e o substitui pelo novo texto.
+@@!131!@
+Dividir Janela
+
+Abre uma segunda janela de edi‡Æo. Vocˆ tamb‚m pode abrir uma
+segunda janela arrastando a barra de t¡tulo para baixo.
+
+Vocˆ pode usar duas janelas para editar o mesmo arquivo ou
+arquivos diferentes. Se o mesmo documento estiver sendo editado
+em ambas as janelas, as a‡äes de edi‡Æo executadas em uma das
+janelas tamb‚m aparecerÆo na outra.
+@@!132!@
+Dimensionar Janela
+
+Redimensiona as janelas de edi‡Æo, se houver duas janelas abertas.
+
+Use as teclas Seta Acima e Seta Abaixo para redimensionar as
+janelas. Pressione Enter para aceitar o novo tamanho da janela ou
+Esc para cancelar.
+
+Vocˆ tamb‚m pode usar o mouse para redimensionar as janelas,
+arrastando a barra de t¡tulo da janela inferior.
+@@!133!@
+Fechar Janela
+
+Fecha a janela de edi‡Æo atual, se houver duas janelas abertas.
+
+Use o mouse ou a tecla F6 para mover o cursor para a janela
+a ser fechada. Em seguida, clique neste item de menu para
+fech -la.
+
+Vocˆ tamb‚m pode usar o mouse para fechar uma janela. Arrastando 
+a barra de t¡tulo inferior para al‚m do limite superior da tela, 
+vocˆ pode fechar a janela superior; arrastando-a para al‚m do 
+limite inferior da tela, vocˆ pode fechar a janela inferior.
+@@!134!@
+Exibir Arquivo
+
+Seleciona um arquivo carregado para edi‡Æo.
+
+Clique no nome do arquivo para o qual vocˆ deseja alternar.
+
+Vocˆ tamb‚m pode usar as teclas de atalho Alt+1...Alt+9 para
+selecionar um arquivo ou usar a tecla F8 para mover-se para
+o pr¢ximo arquivo carregado.
+@@!141!@
+Defini‡äes
+
+Altera as configura‡äes do Edit.
+@@!142!@
+Cores
+
+Muda as cores da tela do Edit.
+@@!152!@
+Comandos do Edit
+
+Lista os comandos de teclado do Edit.
+@@!153!@
+Sobre o Edit
+
+Exibe informa‡äes sobre o Edit.
+@@!200!@
+Erros de Acesso a Arquivos
+
+O Edit nÆo ‚ capaz de criar nem de ter acesso ao arquivo especificado, 
+o que pode ser devido …s seguintes razäes:
+
+ Vocˆ pode estar tentando criar ou gravar em um arquivo
+  localizado em uma unidade de disco somente de leitura, como uma
+  unidade de CD-ROM ou uma unidade de rede somente leitura.
+ Vocˆ pode estar tentando sobrescrever um arquivo somente leitura.
+ Vocˆ pode estar tentando acessar um arquivo que est  bloqueado
+  por outro usu rio ou programa.
+ Vocˆ pode estar tentando ler ou gravar em um nome de pasta.
+@@!201!@
+Unidade de Disco Vazia
+
+Verifique se existe um disco na unidade de disco e se a porta 
+da unidade est  bem fechada.
+@@!202!@
+Erros de Disco
+
+O MS-DOS nÆo ‚ capaz de ler ou de gravar nesta unidade.
+
+Se esta for uma unidade de CD-ROM, verifique se ela cont‚m
+um CD-ROM.
+
+Se esta for um disco r¡gido ou unidade de disquete, pode haver
+problemas com a sua unidade.  aconselh vel que vocˆ saia
+imediatamente e corrija-os. Eles podem ter sido causados por:
+
+   Um setor defeituoso.    
+   Uma unidade de disco formatada ou particionada de forma
+    incorreta.
+   Problemas de hardware com a unidade de disco ou o controlador.
+    
+Um programa de repara‡Æo de disco (como o ScanDisk) pode ser £til    
+para corrigir o problema.  aconselh vel, tamb‚m, fazer um backup
+da unidade.
+@@!203!@
+Erros da Impressora
+
+O Edit nÆo foi capaz de imprimir em sua impressora, o que pode 
+ser devido …s seguintes razäes:
+
+   NÆo h  impressora anexada ao dispositivo.
+   A impressora est  desligada ou off-line.  
+   A impressora est  sem papel.  
+   O cabo da impressora est  solto ou desconectado.
+@@!204!@
+Arquivo ou Caminho Inv lido
+
+O Edit nÆo teve acesso a este arquivo ou pasta,
+o que pode ser devido …s seguintes razäes:
+  
+   O nome do caminho ‚ excessivamente longo ou cont‚m 
+    caracteres inv lidos.
+   O nome do caminho refere-se a uma pasta inexistente.
+  @@!9999!@

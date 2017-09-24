@@ -1,0 +1,98 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 03-Mar-13 16:28 Page   1
+*                                       EX05.CBL
+* Options: LIST(EX05.LST) ASMLIST(EX05.GRP)
+     1 IDENTIFICATION DIVISION.
+     2     PROGRAM-ID.          EX05.
+     3     AUTHOR.              CLEDIR JUSTO.
+     4     INSTALLATION.        FATEC-SP.
+     5     DATE-WRITTEN.        03/03/2013.
+     6     DATE-COMPILED.
+     7     SECURITY.
+     8
+     9 ENVIRONMENT DIVISION.
+    10 CONFIGURATION SECTION.
+    11 SOURCE-COMPUTER.         IBM-PC.
+    12 OBJECT-COMPUTER.         IBM-PC.
+    13 SPECIAL-NAMES.           DECIMAL-POINT IS COMMA.
+    14
+    15 INPUT-OUTPUT SECTION.
+    16 FILE-CONTROL.
+    17     SELECT CADALU ASSIGN TO DISK
+    18     ORGANIZATION IS LINE SEQUENTIAL.
+    19     SELECT CADAPR ASSIGN TO DISK
+    20     ORGANIZATION IS LINE SEQUENTIAL.
+    21
+    22 DATA DIVISION.
+    23 FILE SECTION.
+    24 FD CADALU
+    25     LABEL RECORD ARE STANDARD
+    26     VALUE OF FILE-ID IS "CADALU.DAT".
+    27
+    28 01 REG-ENT.
+    29     02 NUMERO-ENT        PIC 9(05).
+    30     02 NOME-ENT          PIC X(20).
+    31     02 NOTA1             PIC 9(02)V99.
+    32     02 NOTA2             PIC 9(02)V99.
+    33     02 FALTAS            PIC 9(02).
+    34
+    35 FD CADAPR
+    36     LABEL RECORD ARE STANDARD
+    37     VALUE OF FILE-ID IS "CADAPR.DAT".
+    38
+    39 01 REG-SAI.
+    40     02 NUMERO-SAI        PIC 9(05).
+    41     02 NOME-SAI          PIC X(20).
+    42     02 MEDIA             PIC 9(02)V99.
+    43
+    44     WORKING-STORAGE SECTION.
+    45     77 FIM-ARQ           PIC X(03) VALUE "NAO".
+    46     77 MEDIAFINAL        PIC 9(02)V99 VALUE ZEROS.
+    47
+    48 PROCEDURE DIVISION.
+    49
+    50 PGM-EXE05.
+    51     PERFORM INICIO.
+    52     PERFORM PRINCIPAL
+    53       UNTIL FIM-ARQ EQUAL "SIM".
+    54
+    55     PERFORM TERMINO.
+    56
+    57 STOP RUN.
+* Microsoft COBOL Version 4.5        L2.4 revision 002 03-Mar-13 16:28 Page   2
+*                                       EX05.CBL
+    58
+    59 INICIO.
+    60
+    61     OPEN INPUT CADALU
+    62          OUTPUT CADAPR.
+    63     PERFORM LEITURA.
+    64
+    65 LEITURA.
+    66     READ CADALU
+    67     AT END
+    68     MOVE "SIM" TO FIM-ARQ.
+    69
+    70 PRINCIPAL.
+    71     PERFORM SELECAO.
+    72     PERFORM LEITURA.
+    73
+    74 SELECAO.
+    75     COMPUTE MEDIAFINAL = (NOTA1 + NOTA2)/2.
+    76     IF MEDIAFINAL NOT < 7 AND FALTAS NOT > 18
+    77     PERFORM GRAVACAO.
+    78
+    79 GRAVACAO.
+    80     MOVE NUMERO-ENT TO NUMERO-SAI.
+    81     MOVE NOME-ENT TO NOME-SAI.
+    82     MOVE MEDIAFINAL TO MEDIA.
+    83     WRITE REG-SAI.
+    84
+    85 TERMINO.
+    86     CLOSE   CADALU
+    87             CADAPR.
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:        1040     Code:         362     Dictionary:        1216

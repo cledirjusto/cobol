@@ -1,0 +1,86 @@
+[shared-]
+	version=2
+	project=""
+	buildmode=0
+[edit-]
+	srch=
+	fSrchRe=0
+	rpl=
+	src=
+	fRplRe=0
+[pwb]
+	screen=50 80
+	winstyle=7
+	wnd=C 2 1 49 80
+[environ]
+	INCLUDE=C:\COBOL\SOURCE
+	LIB=C:\COBOL\LIB;
+	HELPFILES=C:\COBOL\HELP;
+
+[build]
+    build: macro DEBUG "0"
+    build: macro PWBRMAKE "pwbrmake"
+    build: macro NMAKEBSC1 "set"
+    build: macro NMAKEBSC2 "nmake"
+    build: macro MAPFILE_D "NUL"
+    build: macro MAPFILE_R "NUL"
+    build: macro LFLAGS_G "/BATCH"
+    build: macro LFLAGS_D ""
+    build: macro LFLAGS_R ""
+    build: macro LINKER "link"
+    build: macro ILINK "ilink"
+    build: macro LRF "echo > NUL"
+    build: macro COBOL "cobol"
+    build: macro ANIMFLAGS ""
+    build: macro LRFMERGE ""
+    build: macro LLIBS_R "/NOD COBLIB COBAPI"
+    build: macro LLIBS_D "/NOD COBLIB COBAPI"
+    build: macro COBFLAGS_G "TARGET\"286\" EDITOR\"MS\" NOQUERY"
+    build: macro COBFLAGS_R ""
+    build: macro COBFLAGS_D "ANIM OPT\"0\""
+    build: macro COB_BUILD_TYPE "1,0"
+    build: all $(PROJ).exe
+    build: target $(PROJ).bsc pwbrmake
+    build: target $(PROJ).exe lrf_exe lrfmerge_exe link_exe
+    build: inference .cbl.obj create_dir cbl_cbl_obj
+    build: inference .cbl.sbr create_dir cbl_cbl_sbr
+    build: command pwbrmake "$(PWBRMAKE) @<<\n$(BRFLAGS) $(SBRS)\n<<"
+    build: command nmakebsc1 "$(NMAKEBSC1) MAKEFLAGS="
+    build: command nmakebsc2 "$(NMAKEBSC2) $(NMFLAGS) -f $(PROJFILE) $(PROJ).bsc"
+    build: release command lrf_exe "$(LRF) @<<$(PROJ).lrf\n$(RT_OBJS: = +^\n) $(OBJS: = +^\n)\n$@\n$(MAPFILE_R)\n$(LLIBS_G: = +^\n) +\n$(LLIBS_R: = +^\n) +\n$(LIBS: = +^\n)\n$(DEF_FILE) $(LFLAGS_G) $(LFLAGS_R);\n<<"
+    build: debug command lrf_exe "$(LRF) @<<$(PROJ).lrf\n$(RT_OBJS: = +^\n) $(OBJS: = +^\n)\n$@\n$(MAPFILE_D)\n$(LLIBS_G: = +^\n) +\n$(LLIBS_D: = +^\n) +\n$(LIBS: = +^\n)\n$(DEF_FILE) $(LFLAGS_G) $(LFLAGS_D);\n<<"
+    build: command link_exe "$(LINKER) @$(PROJ).lrf"
+    build: command run "$(PROJ).exe $(RUNFLAGS)"
+    build: command debug "animate $(PROJ).exe $(ANIMFLAGS) END $(RUNFLAGS)"
+    build: release command cbl_cbl_obj "$(COBOL) $<, $@ DIRECTIVES\"$(PROJ).DIR\";"
+    build: debug command cbl_cbl_obj "$(COBOL) $<, $@ DIRECTIVES\"$(PROJ).DIR\";"
+    build: release command cbl_cbl_sbr "$(COBOL) $<, $(@R).obj DIRECTIVES\"$(PROJ).DIR\" BROWSE;"
+    build: debug command cbl_cbl_sbr "$(COBOL) $<, $(@R).obj DIRECTIVES\"$(PROJ).DIR\" BROWSE;"
+    build: release command create_dir "echo $(COBFLAGS_G) $(COBFLAGS_R) > $(PROJ).DIR"
+    build: debug command create_dir "echo $(COBFLAGS_G) $(COBFLAGS_D) > $(PROJ).DIR"
+    build: command lrfmerge_exe "$(LRFMERGE)"
+    build: include dependencies
+    build: include no system
+    build: include .cbl "^[ \t0-9]*copy[ \t]*\"\\([^\"]+\\)\""
+    build: include .cpy "^[ \t0-9]*copy[ \t]*\"\\([^\"]+\\)\""
+    build: include .rc "^[ \t]*rcinclude[ \t]+\\([^ \t]+\\)"
+    build: include .rc "^[ \t]*#[ \t]*include[ \t]*\"[ \t]*\\(\\:p\\)[ \t]*\""
+    build: include .rc "^[ \t]*#[ \t]*include[ \t]*<[ \t]*\\(\\:p\\)[ \t]*>" system
+    build: message "^SYS[0-9][0-9][0-9][0-9]:\\:b"
+    build: message "^NET[0-9][0-9][0-9][0-9]:\\:b"
+    build: message "^\\(\\{\\:p\\!<[^>]*>\\}\\) \\([0-9]+\\) \\([0-9]+\\)[ ]*:" file line col
+    build: message "^\\(\\:p\\):\\([0-9]+\\):" file line
+    build: message "^[^(]+(\\(\\:p\\)) : error L[0-9]+[ ]*: '_*\\([^']+\\)' : unresolved external" file token
+    build: message "^[^(]+(\\(\\:p\\)) : [^L]+L[124]" file
+    build: message "^LINK [^L]+L[124]"
+    build: message "^ILINK : [^L]+L[124]"
+    build: message "^\\(\\:p\\)(\\(\\:z\\))[ ]*: [^U]+U[124]" file line
+    build: message "^NMAKE : [^U]+U[124]"
+    build: message "^\\:p : [^U]+U[124]\\:d\\:d\\:d"
+    build: message "^\\(\\:p\\)\\:b\\([0-9]+\\) \\([0-9]+\\): \\*[ 0-9][ 0-9][ 0-9]" file line col
+    build: message "^\\*[ 0-9][ 0-9][0-9]\\-[FRC]"
+    build: message "^pwbrmake: [^U]+U[124]"
+    build: message "^BIND : [^U]+U[124]"
+    build: message "^\\(\\:p\\)(\\(\\:z\\)) RC:" file line
+    build: message "^RC: error"
+    build: language None

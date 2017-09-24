@@ -1,0 +1,20 @@
+all: dde.exe dde2.exe
+
+dde.exe: dde.obj
+    link dde,,,lcobol os2 ddemgr/m/st:16384;
+
+dde.obj: dde.cbl
+    cobol dde;
+
+dde2.exe: dde2.obj dde2.res
+    link dde2,,,lcobol os2 ddemgr/m/st:16384;
+    rc dde2.res dde2.exe
+
+dde2.res: dde2.rc
+    rc -r dde2.rc
+
+dde2.obj: dde2.cbl dde2.cpy
+    cobol dde2;
+
+dde2.cpy: dde2.h
+    h2cpy dde2
